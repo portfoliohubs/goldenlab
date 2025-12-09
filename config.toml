@@ -1,0 +1,61 @@
+baseURL = "https://portfoliohubs.github.io/goldenlab/"
+languageCode = "ar"
+title = "Smart Dental Lab"
+theme = []
+
+[params]
+  description = "معمل أسنان رقمي متكامل - دقة، سرعة، وكفاءة."
+  whatsapp = "201000000000"
+
+  # 🎨 التحكم في الألوان من هنا
+  [params.style]
+    primary = "#0f172a"    # Navy Blue (الخلفية)
+    card_bg = "#1e293b"    # Slate (الكروت)
+    accent = "#3b82f6"     # Blue (الأزرار)
+    text = "#f8fafc"       # White
+    text_muted = "#94a3b8" # Grey
+
+  # 🏠 قسم الهيرو
+  [params.hero]
+    title = "شريكك في طب الأسنان الرقمي"
+    subtitle = "نقدم حلول CAD/CAM متكاملة بدقة الميكرون."
+    btn_text = "تواصل معنا"
+
+  # 🛠️ قسم الخدمات (قائمة)
+  [[params.services]]
+    icon = "fa-tooth"
+    title = "التركيبات الثابتة"
+    details = ["Zirconia (Full/Layered)", "E-max Press/CAD", "Veneers", "PFM"]
+
+  [[params.services]]
+    icon = "fa-cubes"
+    title = "التركيبات المتحركة"
+    details = ["Flexible Dentures", "Acrylic Dentures", "Chrome Cobalt", "Night Guards"]
+
+  [[params.services]]
+    icon = "fa-microchip"
+    title = "الزراعة الرقمية"
+    details = ["Custom Abutments", "Surgical Guides", "Hybrid Dentures", "All-on-4"]
+
+  # 🖼️ قسم المعرض الذكي (التحكم الكامل في الصور)
+  # لاحظ: نحن نحدد "category" لكل صورة، والموقع سيقوم بترتيبهم تلقائياً
+  
+  [[params.gallery_items]]
+    title = "Full Arch Zirconia"
+    category = "أعمال الزيركون"   # ✅ سيظهر تحت هذا العنوان
+    image = "images/zircon-1.jpg" # ضع صورة بهذا الاسم في static/images
+
+  [[params.gallery_items]]
+    title = "Single Crown Prettau"
+    category = "أعمال الزيركون"
+    image = "images/zircon-2.jpg"
+
+  [[params.gallery_items]]
+    title = "E-max Veneers Case"
+    category = "تجميل وعدسات"     # ✅ سيظهر تحت عنوان جديد
+    image = "images/emax-1.jpg"
+
+  [[params.gallery_items]]
+    title = "Valplast Partial"
+    category = "متحرك"            # ✅ سيظهر تحت عنوان ثالث
+    image = "images/removable-1.jpg"
