@@ -43,7 +43,7 @@ theme = []
   [[params.gallery_items]]
     title = "Full Arch Zirconia"
     category = "أعمال الزيركون"   # ✅ سيظهر تحت هذا العنوان
-    image = "images/zircon-1.jpg" # ضع صورة بهذا الاسم في static/images
+    image = "images/zircon-1.jpeg" # ضع صورة بهذا الاسم في static/images
 
   [[params.gallery_items]]
     title = "Single Crown Prettau"
