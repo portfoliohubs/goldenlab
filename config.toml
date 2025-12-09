@@ -44,6 +44,12 @@ theme = []
     title = "Full Arch Zirconia"
     category = "أعمال الزيركون"   # ✅ سيظهر تحت هذا العنوان
     image = "https://github-production-user-asset-6210df.s3.amazonaws.com/246388625/524466741-8087b3e2-9790-48fa-8bf9-218949eaf298.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20251209%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251209T185129Z&X-Amz-Expires=300&X-Amz-Signature=b943c10174a37bbd2ad68d4f8de3dbb376c4945a47b7974e858999e85d056ca1&X-Amz-SignedHeaders=host" # ضع صورة بهذا الاسم في static/images
+  
+  [[params.gallery_items]]
+    title = "single Zirconia"
+    category = "أعمال الزيركون"   # ✅ سيظهر تحت هذا العنوان
+    image = "https://github-production-user-asset-6210df.s3.amazonaws.com/246388625/524466741-8087b3e2-9790-48fa-8bf9-218949eaf298.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20251209%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251209T185129Z&X-Amz-Expires=300&X-Amz-Signature=b943c10174a37bbd2ad68d4f8de3dbb376c4945a47b7974e858999e85d056ca1&X-Amz-SignedHeaders=host" # ضع صورة بهذا الاسم في static/images
+
 
   [[params.gallery_items]]
     title = "Single Crown Prettau"
