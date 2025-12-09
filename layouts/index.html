@@ -109,7 +109,7 @@
                     {{/* ✅ تم التصحيح هنا: النقطة بدون علامات تنصيص */}}
                     {{ range where $.Site.Params.gallery_items "category" . }}
                         <div class="card" style="padding:0; overflow:hidden;">
-                            <img src="{{ .image | relURL }}" alt="{{ .title }}" class="gallery-img">
+                            <img src="{{ .image | absURL }}" alt="{{ .title }}" class="gallery-img">
                             <div style="padding:15px;">
                                 <h4 style="font-size:1rem;">{{ .title }}</h4>
                             </div>
