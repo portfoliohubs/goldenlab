@@ -9,16 +9,47 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
 
+        /* 1. تعريف الألوان (الوضع الافتراضي: Dark) */
         :root {
-            --primary: {{ .Site.Params.style.primary }};
-            --card-bg: {{ .Site.Params.style.card_bg }};
-            --accent: {{ .Site.Params.style.accent }};
-            --text: {{ .Site.Params.style.text }};
-            --muted: {{ .Site.Params.style.text_muted }};
+            --primary: {{ .Site.Params.style.primary }};   /* كحلي غامق */
+            --card-bg: {{ .Site.Params.style.card_bg }};   /* كحلي فاتح للكروت */
+            --accent: {{ .Site.Params.style.accent }};     /* أزرق */
+            --text: {{ .Site.Params.style.text }};         /* أبيض */
+            --muted: {{ .Site.Params.style.text_muted }};  /* رمادي */
+            --header-bg: rgba(15, 23, 42, 0.95);
         }
 
+        /* 2. ألوان الوضع النهاري (Light Mode Overrides) */
+        body.light-mode {
+            --primary: #f8fafc;       /* خلفية بيضاء مريحة */
+            --card-bg: #ffffff;       /* كروت بيضاء */
+            --text: #0f172a;          /* نص كحلي */
+            --muted: #64748b;         /* رمادي داكن */
+            --header-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        /* إصلاح حدود الكروت في الوضع الفاتح */
+        body.light-mode .card, 
+        body.light-mode .section, 
+        body.light-mode header, 
+        body.light-mode li {
+            border-color: #e2e8f0 !important;
+        }
+        
+        /* تضبيط الظلال في الوضع الفاتح */
+        body.light-mode .card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Global Styles --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--primary); color: var(--text); line-height: 1.6; }
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: var(--primary); 
+            color: var(--text); 
+            line-height: 1.6; 
+            transition: background-color 0.3s, color 0.3s; /* نعومة التحويل */
+        }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -30,12 +61,17 @@
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
 
         /* Header */
-        header { padding: 20px 0; background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        header { padding: 20px 0; background: var(--header-bg); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
         .nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+
+        /* Theme Toggle Button */
+        .theme-btn {
+            background: none; border: none; cursor: pointer; color: var(--text); font-size: 1.2rem; margin-left: 15px; padding: 5px;
+        }
 
         /* Hero */
-        .hero { min-height: 80vh; display: flex; align-items: center; text-align: center; background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%); }
+        .hero { min-height: 80vh; display: flex; align-items: center; text-align: center; background: radial-gradient(circle at center, var(--card-bg) 0%, var(--primary) 70%); }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
         
         /* Grid System */
@@ -47,9 +83,21 @@
         .s-list { list-style: none; margin-top: 20px; }
         .s-list li { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 8px 0; font-size: 0.9rem; color: var(--muted); }
         
-        /* Gallery */
+        /* Gallery Image Fix (السؤال الأول: عدم القص) */
         .cat-title { color: var(--accent); margin-top: 50px; border-right: 4px solid var(--accent); padding-right: 15px; }
-        .gallery-img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; background: #000; }
+        
+        .gallery-img { 
+            width: 100%; 
+            height: 250px;           /* ارتفاع موحد للكروت */
+            object-fit: contain;     /* ✅ الحل: احتواء الصورة كاملة بدون قص */
+            background-color: #000;  /* خلفية سوداء للفراغات */
+            border-radius: 8px 8px 0 0; 
+        }
+        
+        /* في الوضع النهاري نجعل خلفية الصورة رمادية فاتحة بدلاً من الأسود */
+        body.light-mode .gallery-img {
+            background-color: #f1f5f9;
+        }
 
         /* Floating WA */
         .float-wa { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.3); text-decoration: none; z-index: 2000; }
@@ -60,7 +108,13 @@
     <header>
         <div class="container nav">
             <a href="#" class="logo"><i class="fas fa-tooth"></i> {{ .Site.Title }}</a>
-            <a href="#contact" class="btn" style="background:transparent; border:1px solid var(--accent);">اتصل بنا</a>
+            
+            <div style="display: flex; align-items: center;">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="#contact" class="btn" style="background:transparent; border:1px solid var(--accent); color:var(--text);">اتصل بنا</a>
+            </div>
         </div>
     </header>
 
@@ -94,25 +148,19 @@
         <div class="container">
             <h2 style="text-align:center;">معرض الأعمال</h2>
             
-            {{/* 1. استخراج التصنيفات الفريدة */}}
             {{ $categories := slice }}
             {{ range .Site.Params.gallery_items }}
                 {{ $categories = $categories | append .category }}
             {{ end }}
             {{ $uniqueCats := $categories | uniq }}
 
-            {{/* 2. عرض الصور تحت كل تصنيف */}}
             {{ range $uniqueCats }}
                 <h3 class="cat-title">{{ . }}</h3> 
                 <div class="grid" style="margin-top:20px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
                     
-                    {{/* ✅ تصحيح 1: النقطة بدون علامات تنصيص */}}
                     {{ range where $.Site.Params.gallery_items "category" . }}
                         <div class="card" style="padding:0; overflow:hidden;">
-                            
-                            {{/* ✅ تصحيح 2: الحل اليدوي المضمون للصور (BaseURL + Image Name) */}}
                             <img src="{{ .image }}" alt="{{ .title }}" class="gallery-img">
-                            
                             <div style="padding:15px;">
                                 <h4 style="font-size:1rem;">{{ .title }}</h4>
                             </div>
@@ -130,5 +178,29 @@
 
     <a href="https://wa.me/{{ .Site.Params.whatsapp }}" class="float-wa"><i class="fab fa-whatsapp"></i></a>
 
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const icon = toggleBtn.querySelector('i');
+        const body = document.body;
+
+        // 1. التحقق من التخزين المحلي عند التحميل
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        // 2. وظيفة الزر
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                localStorage.setItem('theme', 'dark');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+    </script>
 </body>
 </html>
