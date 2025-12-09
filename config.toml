@@ -58,4 +58,4 @@ theme = []
   [[params.gallery_items]]
     title = "Valplast Partial"
     category = "متحرك"            # ✅ سيظهر تحت عنوان ثالث
-    image = "images/removable-1.jpg"
+    image = "https://github.com/user-attachments/assets/aa5699ce-7fc0-4c40-9083-4cf04b165f95"
