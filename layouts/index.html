@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Site.Title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+        :root {
+            --primary: {{ .Site.Params.style.primary }};
+            --card-bg: {{ .Site.Params.style.card_bg }};
+            --accent: {{ .Site.Params.style.accent }};
+            --text: {{ .Site.Params.style.text }};
+            --muted: {{ .Site.Params.style.text_muted }};
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--primary); color: var(--text); line-height: 1.6; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; }
+        p { color: var(--muted); }
+        
+        /* Components */
+        .btn { display: inline-block; padding: 12px 30px; background: var(--accent); color: white; text-decoration: none; border-radius: 6px; font-weight: bold; transition: 0.3s; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
+
+        /* Header */
+        header { padding: 20px 0; background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+
+        /* Hero */
+        .hero { min-height: 80vh; display: flex; align-items: center; text-align: center; background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%); }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+        
+        /* Grid System */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        
+        /* Services List */
+        .s-list { list-style: none; margin-top: 20px; }
+        .s-list li { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 8px 0; font-size: 0.9rem; color: var(--muted); }
+        
+        /* Gallery */
+        .cat-title { color: var(--accent); margin-top: 50px; border-right: 4px solid var(--accent); padding-right: 15px; }
+        .gallery-img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; background: #000; }
+
+        /* Floating WA */
+        .float-wa { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.3); text-decoration: none; z-index: 2000; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav">
+            <a href="#" class="logo"><i class="fas fa-tooth"></i> {{ .Site.Title }}</a>
+            <a href="#contact" class="btn" style="background:transparent; border:1px solid var(--accent);">اتصل بنا</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <span style="color:var(--accent); font-weight:bold; letter-spacing:1px;">DIGITAL LAB SOLUTIONS</span>
+            <h1>{{ .Site.Params.hero.title }}</h1>
+            <p style="font-size:1.2rem; max-width:600px; margin:0 auto 30px;">{{ .Site.Params.hero.subtitle }}</p>
+            <a href="https://wa.me/{{ .Site.Params.whatsapp }}" class="btn">{{ .Site.Params.hero.btn_text }}</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align:center;">خدمات المعمل</h2>
+            <div class="grid">
+                {{ range .Site.Params.services }}
+                <div class="card">
+                    <i class="fas {{ .icon }}" style="font-size:2.5rem; color:var(--accent); margin-bottom:20px;"></i>
+                    <h3>{{ .title }}</h3>
+                    <ul class="s-list">
+                        {{ range .details }}<li>{{ . }}</li>{{ end }}
+                    </ul>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: rgba(255,255,255,0.02);">
+        <div class="container">
+            <h2 style="text-align:center;">معرض الأعمال</h2>
+            
+            {{ $categories := slice }}
+            {{ range .Site.Params.gallery_items }}
+                {{ $categories = $categories | append .category }}
+            {{ end }}
+            {{ $uniqueCats := $categories | uniq }}
+
+            {{ range $uniqueCats }}
+                <h3 class="cat-title">{{ . }}</h3> <div class="grid" style="margin-top:20px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+                    {{ range where $.Site.Params.gallery_items "category" "." }}
+                        <div class="card" style="padding:0; overflow:hidden;">
+                            <img src="{{ .image | relURL }}" alt="{{ .title }}" class="gallery-img">
+                            <div style="padding:15px;">
+                                <h4 style="font-size:1rem;">{{ .title }}</h4>
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
+            {{ end }}
+        </div>
+    </section>
+
+    <footer class="section" style="text-align:center; font-size:0.9rem;">
+        <p>&copy; 2024 {{ .Site.Title }}. All Rights Reserved.</p>
+    </footer>
+
+    <a href="https://wa.me/{{ .Site.Params.whatsapp }}" class="float-wa"><i class="fab fa-whatsapp"></i></a>
+
+</body>
+</html>
