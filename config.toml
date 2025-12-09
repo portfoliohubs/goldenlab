@@ -53,7 +53,7 @@ theme = []
   [[params.gallery_items]]
     title = "E-max Veneers Case"
     category = "تجميل وعدسات"     # ✅ سيظهر تحت عنوان جديد
-    image = "images/emax-1.jpg"
+    image = "images/official logo.png"
 
   [[params.gallery_items]]
     title = "Valplast Partial"
