@@ -94,15 +94,20 @@
         <div class="container">
             <h2 style="text-align:center;">معرض الأعمال</h2>
             
+            {{/* 1. استخراج التصنيفات الفريدة */}}
             {{ $categories := slice }}
             {{ range .Site.Params.gallery_items }}
                 {{ $categories = $categories | append .category }}
             {{ end }}
             {{ $uniqueCats := $categories | uniq }}
 
+            {{/* 2. عرض الصور تحت كل تصنيف */}}
             {{ range $uniqueCats }}
-                <h3 class="cat-title">{{ . }}</h3> <div class="grid" style="margin-top:20px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
-                    {{ range where $.Site.Params.gallery_items "category" "." }}
+                <h3 class="cat-title">{{ . }}</h3> 
+                <div class="grid" style="margin-top:20px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+                    
+                    {{/* ✅ تم التصحيح هنا: النقطة بدون علامات تنصيص */}}
+                    {{ range where $.Site.Params.gallery_items "category" . }}
                         <div class="card" style="padding:0; overflow:hidden;">
                             <img src="{{ .image | relURL }}" alt="{{ .title }}" class="gallery-img">
                             <div style="padding:15px;">
@@ -110,6 +115,7 @@
                             </div>
                         </div>
                     {{ end }}
+
                 </div>
             {{ end }}
         </div>
