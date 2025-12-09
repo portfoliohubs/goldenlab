@@ -106,10 +106,13 @@
                 <h3 class="cat-title">{{ . }}</h3> 
                 <div class="grid" style="margin-top:20px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
                     
-                    {{/* ✅ تم التصحيح هنا: النقطة بدون علامات تنصيص */}}
+                    {{/* ✅ تصحيح 1: النقطة بدون علامات تنصيص */}}
                     {{ range where $.Site.Params.gallery_items "category" . }}
                         <div class="card" style="padding:0; overflow:hidden;">
-                            <img src="{{ .image | absURL }}" alt="{{ .title }}" class="gallery-img">
+                            
+                            {{/* ✅ تصحيح 2: الحل اليدوي المضمون للصور (BaseURL + Image Name) */}}
+                            <img src="{{ $.Site.BaseURL }}{{ .image }}" alt="{{ .title }}" class="gallery-img">
+                            
                             <div style="padding:15px;">
                                 <h4 style="font-size:1rem;">{{ .title }}</h4>
                             </div>
