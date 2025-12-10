@@ -40,28 +40,26 @@ theme = []
   # 🖼️ قسم المعرض الذكي (التحكم الكامل في الصور)
   # لاحظ: نحن نحدد "category" لكل صورة، والموقع سيقوم بترتيبهم تلقائياً
   
-  [[params.gallery_items]]
-    title = "Full Arch Zirconia"
-    category = "أعمال الزيركون"   # ✅ سيظهر تحت هذا العنوان
-    image = "https://github-production-user-asset-6210df.s3.amazonaws.com/246388625/524466741-8087b3e2-9790-48fa-8bf9-218949eaf298.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20251209%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251209T185129Z&X-Amz-Expires=300&X-Amz-Signature=b943c10174a37bbd2ad68d4f8de3dbb376c4945a47b7974e858999e85d056ca1&X-Amz-SignedHeaders=host" # ضع صورة بهذا الاسم في static/images
-  
+ 
   [[params.gallery_items]]
     title = "single Zirconia"
     category = "أعمال الزيركون"   # ✅ سيظهر تحت هذا العنوان
-    image = "https://github-production-user-asset-6210df.s3.amazonaws.com/246388625/524466741-8087b3e2-9790-48fa-8bf9-218949eaf298.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20251209%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251209T185129Z&X-Amz-Expires=300&X-Amz-Signature=b943c10174a37bbd2ad68d4f8de3dbb376c4945a47b7974e858999e85d056ca1&X-Amz-SignedHeaders=host" # ضع صورة بهذا الاسم في static/images
+    image = "https://github.com/user-attachments/assets/b245ca19-94a2-40fa-9b0f-b21f656ff907" # ضع صورة بهذا الاسم في static/images
+
+
 
 
   [[params.gallery_items]]
-    title = "Single Crown Prettau"
-    category = "أعمال الزيركون"
-    image = "images/zircon-2.jpg"
-
-  [[params.gallery_items]]
-    title = "E-max Veneers Case"
+    title = "E-max Veneer Case"
     category = "تجميل وعدسات"     # ✅ سيظهر تحت عنوان جديد
-    image = "images/official logo.png"
+    image = "https://github.com/user-attachments/assets/95b98be6-8e68-42c9-8474-b5dec39ed019"
 
   [[params.gallery_items]]
-    title = "Valplast Partial"
+    title = "complete removsble denture"
     category = "متحرك"            # ✅ سيظهر تحت عنوان ثالث
-    image = "https://github.com/user-attachments/assets/aa5699ce-7fc0-4c40-9083-4cf04b165f95"
+    image = "https://github.com/user-attachments/assets/21bff32e-3451-46d7-94eb-0523b457ba5f"
+
+  [[params.gallery_items]]
+    title = "partial removsble denture"
+    category = "متحرك"            # ✅ سيظهر تحت عنوان ثالث
+    image = "https://github.com/user-attachments/assets/19b8a20e-48ad-4f02-a3c4-9eb739434a12" 
