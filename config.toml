@@ -44,7 +44,7 @@ theme = []
   [[params.gallery_items]]
     title = "single Zirconia"
     category = "أعمال الزيركون"   # ✅ سيظهر تحت هذا العنوان
-    image = "https://github.com/user-attachments/assets/b245ca19-94a2-40fa-9b0f-b21f656ff907" # ضع صورة بهذا الاسم في static/images
+    image = "images/single Zirconia.png" # ضع صورة بهذا الاسم في static/images
 
 
 
@@ -55,11 +55,11 @@ theme = []
     image = "https://github.com/user-attachments/assets/95b98be6-8e68-42c9-8474-b5dec39ed019"
 
   [[params.gallery_items]]
-    title = "complete removsble denture"
+    title = "complete removable denture"
     category = "متحرك"            # ✅ سيظهر تحت عنوان ثالث
-    image = "https://github.com/user-attachments/assets/21bff32e-3451-46d7-94eb-0523b457ba5f"
+    image = "images/complete removable denture.png"
 
   [[params.gallery_items]]
-    title = "partial removsble denture"
+    title = "partial removable denture"
     category = "متحرك"            # ✅ سيظهر تحت عنوان ثالث
-    image = "https://github.com/user-attachments/assets/19b8a20e-48ad-4f02-a3c4-9eb739434a12" 
+    image = "images/partial removable denture.png" 
